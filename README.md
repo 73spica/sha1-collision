@@ -20,3 +20,10 @@ $ python collision.py sample1.jpg sample2.jpg
 * サイズによっては横に伸びたり縦に伸びたりしそう．そこは衝突とはあまり関係ないため実装するかは迷いどころです．
 
 ## Example
+![example1](https://github.com/73spica/sha1-collision/blob/master/example_figs/sha1-collision-neta.PNG)
+
+
+![example2](https://github.com/73spica/sha1-collision/blob/master/example_figs/sha1.PNG)
+
+
+![example3](https://github.com/73spica/sha1-collision/blob/master/example_figs/sha1-collision.PNG)
