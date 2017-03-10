@@ -9,3 +9,10 @@ Googleが発表したSHA-1衝突の原理で衝突PDFを生成するスクリプ
 * sample1.jpg, sample2.jpg -> PDFに埋め込むJPG．何でも良い．
 * materials -> 必要なバイナリデータを入れてるディレクトリ．
 * example_figs -> 成功例画像
+
+## Usage
+```
+$ python collision.py sample1.jpg sample2.jpg
+```
+
+## Example
