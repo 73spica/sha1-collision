@@ -75,6 +75,9 @@ def main():
                     first_f = False
                     continue
                 comment_area = pos - pre_pos + 4 + 2 # fffe0006の後までにしたいので4足す．fe後の2バイト-2がコメントになるので2足す．
+                if comment_area > 0xffff:
+                    print "本JPGデータは，このスクリプトでは上手くコメントエリアを作れません．"
+                    sys.exit(1)
                 insert = 0xfffe0006fffe0000 + comment_area
                 result += hex(insert)[2:-1] + jpg1[pre_pos:pos].encode("hex")
                 print "Find:",pos
@@ -84,16 +87,21 @@ def main():
                 pos += 1
         else:
             pos += 1
-    #print result
     comment_area = pos - pre_pos + 2 # fffe0006の後までにしたいので4足す．fe後の2バイト-2がコメントになるので2足す．
+    if comment_area > 0xffff:
+        print "本データは，このスクリプトでは上手くコメントエリアを作れません．"
+        sys.exit(1)
     insert = 0xfffe0006fffe0000 + comment_area
     result += hex(insert)[2:-1] + jpg1[pre_pos:pos].encode("hex")
     result = result.decode("hex")
 
     # 次に，先頭部分のFF FE 00 FCの部分の00FCを書き換えて，うまく次のFF FE 00 06のところまで行くようにバイト数を計算して埋め込む
     comment_area = 8 + first_skip + 4 + 2
+    if comment_area > 0xffff:
+        print "本データは，このスクリプトでは上手くコメントエリアを作れません．"
+        sys.exit(1)
+
     insert = ("fffe"+format(comment_area,"04x")+"00"*8).decode("hex")
-    print insert.encode("hex")
 
     # 細工した値と必要な値をがっちゃんこして.pdfで保存して完成
     open("collision-1.pdf","w").write(header1+insert+result+jpg2+footer)
