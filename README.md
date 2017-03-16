@@ -15,6 +15,10 @@ Googleが発表したSHA-1衝突の原理で衝突PDFを生成するスクリプ
 $ python collision.py sample1.jpg sample2.jpg
 ```
 
+## Mechanism
+* 以下のスライドがとても参考になります．
+* https://www.slideshare.net/herumi/googlesha1
+
 ## Limitation
 * Adobeのリーダだと見れないことがあるのでブラウザで見るのが良い．pdfの方のフォーマットの関係と思われます．そこについては未実装．
 * サイズによっては横に伸びたり縦に伸びたりしそう．そこは衝突とはあまり関係ないため実装するかは迷いどころです．
